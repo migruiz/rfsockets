@@ -11,6 +11,6 @@ else
 	HUBNAME=migruiz/$PI_APP-$PI_TYPE:$TRAVIS_TAG;
 fi
 docker pull $HUBNAME || true
-docker build -f Dockerfile_$PI_TYPE --cache-from $HUBNAME  -t $HUBNAME  . 
+docker build --cache-from $HUBNAME  -t $HUBNAME  . 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin 
 docker push $HUBNAME  

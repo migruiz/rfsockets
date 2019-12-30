@@ -1,4 +1,4 @@
-FROM resin/raspberrypi3-debian
+FROM balenalib/raspberrypi3
 RUN [ "cross-build-start" ]
 
 RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
