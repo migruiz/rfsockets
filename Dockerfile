@@ -1,12 +1,10 @@
-FROM balenalib/raspberrypi3
+FROM balenalib/raspberrypi3-node:8-latest
 RUN [ "cross-build-start" ]
 
-RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - \
-&& apt-get install -yqq --no-install-recommends nodejs   && rm -rf /var/lib/apt/lists/*
 
 
 RUN apt-get update && \
-apt-get install -yqq --no-install-recommends g++ gcc make  && rm -rf /var/lib/apt/lists/*
+apt-get install -yqq --no-install-recommends curl g++ gcc make  supervisor && rm -rf /var/lib/apt/lists/*
 
 
 
