@@ -1,0 +1,18 @@
+sudo: required
+
+
+services:
+  - docker
+
+env:
+  global:
+    - PI_APP=christmas-lights-trigger
+  matrix:
+    - PI_TYPE=rpi3
+
+script: bash travis.sh || travis_terminate 1;
+
+
+notifications:
+   email:
+      - mig.ruiz@gmail.com

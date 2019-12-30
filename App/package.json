@@ -1,0 +1,12 @@
+{
+  "name": "door-sensor-readings-file-monitor",
+  "version": "0.0.0",
+  "description": "DoorSensorReadingsFileMonitor",
+  "main": "app.js",
+  "author": {
+    "name": "piscos"
+  },
+  "dependencies": {
+    "mqtt": "~2.18.3"
+  }
+}
