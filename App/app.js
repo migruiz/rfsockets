@@ -1,4 +1,3 @@
-var spawn = require('child_process').spawn;
 
 
 var mqtt = require('mqtt')
@@ -27,7 +26,7 @@ async function executeMultipleCommandsAsync(codes) {
     for (var i = 0; i < global.roundCycles; i++) {
         for (codeIndex = 0; codeIndex < codes.length;codeIndex++) { 
             var code=codes[codeIndex];
-             await executeSingleCommandAsync(code);
+             executeSingleCommand(code);
              await timeout(global.waitForNextCommand);
         }
 
@@ -35,22 +34,8 @@ async function executeMultipleCommandsAsync(codes) {
     }
 }
 
-function executeSingleCommandAsync(code) {
-    return new Promise(function (resolve, reject) {
-        const command = spawn('/433Utils/RPi_utils/codesend'
-            , [
-                code
-                , '-l'
-                , '180'
-            ]);
-        command.stdout.on('data', data => {
-            console.log(data.toString());
-        });
-        command.on('exit', function (code, signal) {
-            console.log('exited');
-            resolve();
-        });
-    });
+function executeSingleCommand(code) {
+    client.publishData('rflinkTX',code)
 }
 
 
