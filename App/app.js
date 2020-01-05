@@ -35,7 +35,7 @@ async function executeMultipleCommandsAsync(codes) {
 }
 
 function executeSingleCommand(code) {
-    client.publishData('rflinkTX',code)
+    client.publish('rflinkTX',JSON.stringify(code))
 }
 
 
